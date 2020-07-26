@@ -1,0 +1,60 @@
+baseURL = "http://suzusky.net/"
+languageCode = "ja-ja"
+title = "Suzusky"
+theme = "LeaveIt"
+
+paginate = 12
+enableEmoji = true
+enableRobotsTXT = true
+googleAnalytics = ""
+
+preserveTaxonomyNames = true
+[blackfriday]
+  hrefTargetBlank = true
+  nofollowLinks = true
+  noreferrerLinks = true
+
+[Permalinks]
+ posts = "/:year/:filename/"
+
+[menu]
+  [[menu.main]]
+    name = "Blog"
+    url = "/posts/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 3
+
+  [[menu.main]]
+    name = "Aboutme"
+    url = "/about/"
+    weight = 4
+
+[params]
+    since = 2019
+    author = "Ryotaro SUMI @ryo_628"
+    avatar = "https://avatars2.githubusercontent.com/u/13991840?s=460&u=3cf923d25cc16fe97c8719f24e10cf2a37ed6441&v=4"
+    subtitle = "suzusky : @ryo_628's homepage"
+    cdn_url = "" # Base CDN URL
+    home_mode = "" # post or other
+
+    google_verification = ""
+   
+    description = "" # site description
+    keywords = "" # site keywords
+
+[params.social]
+    GitHub = "ryo628"
+    Twitter = "ryo_628"
+    Email   = "ryo@suzusky.net"
+    Instagram = "s_ryo_0602"
+    Facebook = "sumiryo628"
+
