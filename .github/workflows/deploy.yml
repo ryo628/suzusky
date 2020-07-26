@@ -1,0 +1,41 @@
+# This is a basic workflow to help you get started with Actions
+
+name: deploy
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.74.3'
+          # extended: true
+
+      - name: Build
+        run: cd hugo && hugo
+      
+      - name: Generate ssh key
+        run: echo "$SSH_PRIVATE_KEY" > key && chmod 600 key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      - name: Deploy
+        run: rsync -rlptgoD --delete --exclude ".git/" -e "ssh -i ./key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null " public/ $SSH_USER@$SSH_HOST:$DEPLOY_PATH
+        env:
+          SSH_USER: ${{ secrets.SSH_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
