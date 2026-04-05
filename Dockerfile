@@ -1,7 +1,11 @@
-FROM golang:1.14.6-alpine3.11 AS hugo_builder
+ARG GO_VERSION
+ARG HUGO_VERSION
 
-ENV HUGO_VERSION='0.74.3'
-ENV HUGO_NAME="hugo_extended_${HUGO_VERSION}_Linux-64bit"
+FROM golang:${GO_VERSION}-alpine AS hugo_builder
+
+ARG HUGO_VERSION
+ENV HUGO_VERSION=${HUGO_VERSION}
+ENV HUGO_NAME="hugo_extended_${HUGO_VERSION}_linux-amd64"
 ENV HUGO_BASE_URL="https://github.com/gohugoio/hugo/releases/download"
 ENV HUGO_URL="${HUGO_BASE_URL}/v${HUGO_VERSION}/${HUGO_NAME}.tar.gz"
 ENV HUGO_CHECKSUM_URL="${HUGO_BASE_URL}/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_checksums.txt"

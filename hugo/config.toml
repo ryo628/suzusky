@@ -1,60 +1,67 @@
-baseURL = "http://suzusky.net/"
-languageCode = "ja-ja"
+baseURL = "https://suzusky.net/"
+languageCode = "ja"
 title = "Suzusky"
-theme = "LeaveIt"
+theme = "PaperMod"
 
-paginate = 12
 enableEmoji = true
 enableRobotsTXT = true
-googleAnalytics = ""
 
-preserveTaxonomyNames = true
-[blackfriday]
-  hrefTargetBlank = true
-  nofollowLinks = true
-  noreferrerLinks = true
+[pagination]
+  pagerSize = 12
 
-[Permalinks]
- posts = "/:year/:filename/"
+[permalinks]
+  posts = "/:year/:slug/"
 
 [menu]
   [[menu.main]]
+    identifier = "posts"
     name = "Blog"
     url = "/posts/"
     weight = 1
 
   [[menu.main]]
+    identifier = "categories"
     name = "Categories"
     url = "/categories/"
     weight = 2
 
   [[menu.main]]
+    identifier = "tags"
     name = "Tags"
     url = "/tags/"
     weight = 3
 
   [[menu.main]]
-    name = "Aboutme"
+    identifier = "about"
+    name = "About"
     url = "/about/"
     weight = 4
 
 [params]
-    since = 2019
-    author = "Ryotaro SUMI @ryo_628"
-    avatar = "https://avatars2.githubusercontent.com/u/13991840?s=460&u=3cf923d25cc16fe97c8719f24e10cf2a37ed6441&v=4"
-    subtitle = "suzusky : @ryo_628's homepage"
-    cdn_url = "" # Base CDN URL
-    home_mode = "" # post or other
+  author = "Ryotaro SUMI"
+  description = "suzusky : @ryo_628's homepage"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
 
-    google_verification = ""
-   
-    description = "" # site description
-    keywords = "" # site keywords
+  [params.profileMode]
+    enabled = true
+    title = "Ryotaro SUMI"
+    subtitle = "@ryo_628's homepage"
+    imageUrl = "https://avatars2.githubusercontent.com/u/13991840"
+    imageWidth = 120
+    imageHeight = 120
 
-[params.social]
-    GitHub = "ryo628"
-    Twitter = "ryo_628"
-    Email   = "ryo@suzusky.net"
-    Instagram = "s_ryo_0602"
-    Facebook = "sumiryo628"
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/ryo628"
 
+  [[params.socialIcons]]
+    name = "x"
+    url = "https://x.com/ryo_628"
+
+  [[params.socialIcons]]
+    name = "email"
+    url = "mailto:ryo@suzusky.net"

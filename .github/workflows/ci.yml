@@ -15,10 +15,14 @@ jobs:
           submodules: true
           fetch-depth: 0
 
+      - name: Load .env
+        uses: xom9ikk/dotenv@v2
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: 'latest'
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
 
       - name: Build
         run: cd hugo && hugo

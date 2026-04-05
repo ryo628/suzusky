@@ -2,39 +2,34 @@
 
 ポートフォリオ 兼 Top Page用のリポジトリ
 
-# 開発
+## Local環境
 
-`docker-compose`　を使う。
+Docker Compose を使用。
 
-```
-$ docker-compose up -d
-$ docker container exec -it hugo_app /bin/sh
-```
-
-# 新規投稿
-
-コマンドで雛形作成。
-
-```
-> hugo new posts/HOGE.md
+```bash
+docker compose up -d
 ```
 
-書き終わったら `draft: true` を消す(はず)。
+http://localhost:1313 でプレビュー可能（下書きも表示）。
 
-利用してるテーマの拡張機能？で以下のやつ追加すると良い。
+## 新規投稿
 
-```
-categories: ["HOGE"]
-tags: ["HOGE", "FUGA"]
-description: "HOGE"
+```bash
+docker compose exec hugo_app hugo new posts/my-new-post.md
 ```
 
-# 実行確認
+書き終わったら `draft: true` を削除。
 
-コンテナ内で `hugo server` を叩くことで `https://localhost:1313` にホストされる。
-`-D` で下書きも反映される。
-細かいあれはHUGOのドキュメントで確認してください。
+### Front matter 例
 
+```yaml
+---
+title: "記事タイトル"
+date: 2026-04-05
+draft: false
+categories: ["Blog"]
+tags: ["Hugo", "Web"]
+description: "記事の説明"
+---
 ```
-> hugo server -D --bind="0.0.0.0"
-```
+

@@ -1,1 +1,3 @@
-hugo/public/*
+hugo/public/
+hugo/resources/
+hugo/.hugo_build.lock
